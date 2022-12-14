@@ -1,4 +1,11 @@
 # See https://github.com/helm/chart-testing#configuration
-remote: origin
+#debug: true
+#remote: origin
+target-branch: main
+validate-yaml: true
+validate-maintainers: false
+helm-extra-args: --timeout 800s
+charts:
+  - helm-charts/tchap-web
 chart-dirs:
   - helm-charts/tchap-web
