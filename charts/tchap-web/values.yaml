@@ -14,6 +14,29 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+## Tchap configuration
+##
+config: |-
+    {}
+
+## Configuration to add into the nginx server object
+##
+nginxConfig: |-
+  add_header X-Frame-Options SAMEORIGIN;
+  add_header X-Content-Type-Options nosniff;
+  add_header X-XSS-Protection "1; mode=block";
+  add_header Content-Security-Policy "frame-ancestors 'none'";
+
+## Configuration for mounting additional volumes into the application container.
+##
+extraVolumes: {}
+# - name: backgrounds
+#   persistentVolumeClaim:
+#     claimName: element-backgrounds
+extraVolumeMounts: {}
+# - name: backgrounds
+#   mountPath: /app/themes/element/img/backgrounds/
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
