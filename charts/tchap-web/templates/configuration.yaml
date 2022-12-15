@@ -7,4 +7,4 @@ metadata:
     {{- include "tchap-web.labels" . | nindent 4 }}
 data:
   config.json: |
-    {{ .Values.config | toJson | nindent 4}}
+    {{ .Values.config | nindent 4}}
