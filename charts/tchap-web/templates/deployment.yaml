@@ -13,8 +13,10 @@ spec:
       {{- include "tchap-web.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+        checksum/config: {{ include (print .Template.BasePath "/configuration.yaml") . | sha256sum }}
+        checksum/config-nginx: {{ include (print .Template.BasePath "/configuration-nginx.yaml") . | sha256sum }}
+      {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
@@ -47,6 +49,25 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /app/config.json
+              name: config
+              subPath: config.json
+            - mountPath: /etc/nginx/conf.d
+              name: config-nginx
+          {{- with .Values.extraVolumeMounts }}
+          {{- . | toYaml | nindent 12 }}
+          {{- end }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "tchap-web.fullname" . }}
+        - name: config-nginx
+          configMap:
+            name: {{ printf "%s-nginx" (include "tchap-web.fullname" .) | trunc 63 | trimSuffix "-" }}
+      {{- with .Values.extraVolumes }}
+      {{- . | toYaml | nindent 8 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
