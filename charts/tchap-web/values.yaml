@@ -16,8 +16,8 @@ fullnameOverride: ""
 
 ## Tchap configuration
 ##
-config: |-
-    {}
+config: |
+  {}
 
 ## Configuration to add into the nginx server object
 ##
