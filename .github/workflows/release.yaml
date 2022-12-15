@@ -18,10 +18,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Debug
-        run: |
-          echo $GITHUB_REPOSITORY
-
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
