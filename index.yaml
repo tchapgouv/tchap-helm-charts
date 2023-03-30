@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   tchap-web:
   - apiVersion: v2
+    appVersion: latest
+    created: "2023-03-30T12:37:13.711942582Z"
+    description: tchap-web Helm chart for Kubernetes
+    digest: 5f081bd3c16fe8fc2a390c63b35a4e6bd9a73f1f078a0bdd644ac4882e93e122
+    name: tchap-web
+    type: application
+    urls:
+    - https://github.com/tchapgouv/tchap-helm-charts/releases/download/tchap-web-0.1.4/tchap-web-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     appVersion: tchap-4.1.4_1.11.12
     created: "2022-12-15T22:47:28.885528498Z"
     description: tchap-web Helm chart for Kubernetes
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://github.com/tchapgouv/tchap-web-helm-charts/releases/download/tchap-web-0.1.0/tchap-web-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-15T22:47:28.885542498Z"
+generated: "2023-03-30T12:37:13.711958582Z"
